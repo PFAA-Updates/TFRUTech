@@ -2,6 +2,7 @@ package ua.pp.shurgent.tfctech.waila;
 
 import java.util.List;
 
+import com.bioxx.tfc.TileEntities.TEOre;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -35,7 +36,7 @@ public class WAILAData implements IWailaDataProvider {
 	}
 	
 	private ItemStack oreStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		int meta = accessor.getMetadata();
+		int meta = ((TEOre) accessor.getTileEntity()).droppedOreID;
 		TEModOre te = (TEModOre) accessor.getTileEntity();
 		ItemStack itemstack = null;
 		
@@ -52,14 +53,7 @@ public class WAILAData implements IWailaDataProvider {
 	}
 	
 	private int getOreGrade(TEModOre te, int ore) {
-		if (te != null) {
-			int grade = te.extraData & 7;
-			if (grade == 1)
-				ore = 1;
-			else if (grade == 2)
-				ore = 2;
-		}
-		return ore;
+		return te.droppedOreID;
 	}
 	
 	private ItemStack wireStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
@@ -103,7 +97,7 @@ public class WAILAData implements IWailaDataProvider {
 	}
 	
 	private List<String> oreBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		int meta = accessor.getMetadata();
+		int meta = ((TEOre) accessor.getTileEntity()).droppedOreID;
 		
 		if (accessor.getBlock() == ModBlocks.ore) {
 			switch (meta) {
