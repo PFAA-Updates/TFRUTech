@@ -16,6 +16,7 @@ import com.bioxx.tfc.WorldGen.TFCBiome;
 import com.bioxx.tfc.api.TFCBlocks;
 
 import cpw.mods.fml.common.IWorldGenerator;
+import ua.pp.shurgent.tfctech.core.ModItems;
 
 public class WorldGenBauxiteRocks implements IWorldGenerator {
 
@@ -48,9 +49,8 @@ public class WorldGenBauxiteRocks implements IWorldGenerator {
 			for (int z = 0; z <= 15; z++) {
 				for (int y = yCoord; y > yCoord - 35; y--) {
 					if (world.getBlock(x1 + x, y, z1 + z) == ModBlocks.ore) {
-						int m = world.getBlockMetadata(x1 + x, y, z1 + z);
-						it = BlockModOre.getDroppedItem(m);
-						is = new ItemStack(it, 1, m);
+						it = ModItems.smallOreChunk;
+						is = new ItemStack(it, 1, 0);
 						return is;
 					}
 				}

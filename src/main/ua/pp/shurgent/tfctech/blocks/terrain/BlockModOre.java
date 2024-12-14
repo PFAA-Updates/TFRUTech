@@ -39,6 +39,12 @@ public class BlockModOre extends BlockOre {
 		itemstack.stackSize = this.quantityDropped(ore, fortune, world.rand);
 		return itemstack;
 	}
+
+	@Override
+	public boolean isOreGradable(int meta) {
+		return false;
+	}
+
 	@Override
 	public IIcon getIcon(int side, int meta) {
 		if (meta >= icons.length)
