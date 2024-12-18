@@ -46,7 +46,7 @@ public class BlockModOre extends BlockOre {
 	}
 
 	@Override
-	public IIcon getIcon(int side, int meta) {
+	public IIcon getOreIcon(int side, int meta) {
 		if (meta >= icons.length)
 			return icons[0];
 		return icons[meta];
